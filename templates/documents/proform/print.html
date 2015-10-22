@@ -1,0 +1,82 @@
+{% extends "documents/base.html" %}
+
+{% block content %}
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <p>{{ proform.company.address }}</p>
+        <p>{{ proform.company.phone }}</p>
+        <p>{{ proform.company.web_url }}</p>
+      </div>
+      <div class="col-xs-6">
+        <img src="/media/{{ proform.company.logo }}" alt="" style="height: 150px;">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <p>{{ proform.client.name }}</p>
+            <p>{{ proform.client.address }}</p>
+            <p>{{ proform.client.city }}</p>
+            <p>{{ proform.client.country }}</p>
+            <p>{{ proform.client.cuit }}</p>
+        </div>
+        <div class="col-xs-6">
+            <h4>Factura proforma</h4>
+            <table class="table">
+                <tr>
+                    <th>Numero de proforma</th>
+                    <td>{{ proform.id }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de factura</th>
+                    <td>{{ proform.created }}</td>
+                </tr>
+                <tr>
+                    <th>Condiciones de pago</th>
+                    <td>{{ proform.payment_conditions }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de vencimiento</th>
+                    <td>{{ proform.expire_on }}</td>
+                </tr>
+                <tr>
+                    <th>Total a pagar</th>
+                    <td>{{ proform.total_to_pay }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Trabajo</th>
+                        <th>Descripcion</th>
+                        <th>Horas</th>
+                        <th>Observaciones</th>
+                        <!--<th>Precio</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for work in works %}
+                        <tr>
+                            <td>{{ work.name }}</td>
+                            <td>{{ work.description }}</td>
+                            <td>{{ work.hours }}</td>
+                            <td>{{ work.observations }}</td>
+                            <!--<td>{{ work.precio }}</td>-->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
